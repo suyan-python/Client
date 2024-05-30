@@ -1,26 +1,30 @@
 import { useForm } from "@mantine/form";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../store/auth";
 
 function Form({ props }) {
+  const URL = "http://localhost:8080/auth/login";
   const navigate = useNavigate();
+  const { storeTokenInLS } = useAuth();
+
   const tryLogin = async () => {
     const name = form.getValues().name;
     const password = form.getValues().password;
-    console.log(form.getValues());
+    // console.log(form.getValues());
 
     try {
-      const res = await axios.post("http://localhost:8080/auth/login", {
+      const res = await axios.post(URL, {
         username: name,
         password: password,
       });
-      console.log(res);
+      const token = res.data.data.token;
 
       if (res.status === 200) {
         props();
-        // navigate("/Home");
-
-        // document.location = "/Home";
+        navigate("/Home");
+        // localStorage.setItem("token", token);
+        storeTokenInLS(token);
       }
     } catch (e) {
       alert("User Invalid");
@@ -62,7 +66,7 @@ function Form({ props }) {
       <div className="authentication gap-2 justify-center">
         <div className="login">
           <button
-            onClick={props}
+            onClick={tryLogin}
             className="bg-red-500 text-white px-2 py-1 my-2 rounded-xl"
           >
             SignIn

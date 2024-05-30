@@ -12,6 +12,7 @@ import DarkMode from "./components/DarkMode/DarkMode";
 import Verify from "./components/verification/Verify";
 import SignUp from "./components/form/SignUp";
 import TeacherDetails from "./components/teacher/TeacherDetails";
+import Demo from './components/login/LoginPage';
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
