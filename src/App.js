@@ -14,10 +14,12 @@ import SignUp from "./components/form/SignUp";
 import TeacherDetails from "./components/teacher/TeacherDetails";
 import Demo from './components/login/LoginPage';
 
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import AdminDetails from "./components/adminDetails/AdminDetails";
+import { Logout } from "./components/logout/Logout";
 
 // require("./userDetails");
 
@@ -70,6 +72,12 @@ function App()
                 exact
                 path="/AdminDetails"
                 element={<AdminDetails />}
+              />
+
+              <Route
+                exact
+                path="/Logout"
+                element={<Logout />}
               />
 
             </Routes>

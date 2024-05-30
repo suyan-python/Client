@@ -47,7 +47,7 @@ function Navbar()
             <NavLink
               className="hover:bg-red-600 p-1 rounded transition  hover:text-white text-red-600"
               onClick={logout}
-              to={"./"}
+              to={"/Logout"}
             >
               Logout
             </NavLink>
