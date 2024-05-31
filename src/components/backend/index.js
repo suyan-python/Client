@@ -38,8 +38,8 @@ app.get('/getUsers', (req, res) =>
 //         ).join(' '));
 // });
 
-const userRouter = require('./modules/user/router');
 const authRouter = require('./modules/authentication/router');
+const userRouter = require('./modules/user/router');
 
 app.use('/auth', authRouter);
 app.use('/user', userRouter);

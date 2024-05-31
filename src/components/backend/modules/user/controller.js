@@ -1,14 +1,31 @@
 const schema = require('./schema');
+const token = require('../authentication/controller')
 
 const getAll = async (req, res) =>
 {
-    const data = await schema.find({});
+    const data = await schema.find({}).select({ password: 0 });
     // select * from category;
     res.send({
         status: 900,
         message: 'Data retrieved',
         data: data
     });
+
+    console.log(data);
+
+    req.user = data;
+    req.token = token.login.token;
+    req.userID = data._id;
+    // try
+    // {
+    //     const userData = req.user;
+    //     console.log(userData);
+    //     return res.status(200).json({ msg: userData })
+
+    // } catch (error)
+    // {
+    //     console.log(`Error from user ${error}`);
+    // }
 }
 
 const getById = async (req, res) =>
@@ -93,6 +110,21 @@ const remove = async (req, res) =>
     }
 }
 
+//send user data
+const user = async (req, res) =>
+{
+    try
+    {
+        // const userData = req.user;
+        // console.log(userData);
+        res.status(200).json({ msg: "Hi User" })
+
+    } catch (error)
+    {
+        console.log(`Error from user data ${error}`);
+    }
+}
+
 
 
 module.exports = {
@@ -101,4 +133,5 @@ module.exports = {
     update,
     remove,
     getById,
+    user,
 }

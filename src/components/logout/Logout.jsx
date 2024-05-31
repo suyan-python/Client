@@ -3,11 +3,14 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 
 export const Logout = () => {
-  const LogoutUser = useAuth();
+  const { LogoutUser } = useAuth();
 
-  useEffect(() => {
-    LogoutUser();
-  }, [LogoutUser]);
-
+  try {
+    useEffect(() => {
+      LogoutUser();
+    }, [LogoutUser]);
+  } catch (error) {
+    console.log(error);
+  }
   return <Navigate to="/" />;
 };
