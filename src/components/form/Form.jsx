@@ -66,7 +66,7 @@ function Form({ props }) {
       <div className="authentication gap-2 justify-center">
         <div className="login">
           <button
-            onClick={tryLogin}
+            onClick={props}
             className="bg-red-500 text-white px-2 py-1 my-2 rounded-xl"
           >
             SignIn

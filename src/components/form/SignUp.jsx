@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
+import { useState } from "react";
 
 function SignUp({ props }) {
   const URL = "http://localhost:8080/auth/sign-up";
@@ -41,19 +42,87 @@ function SignUp({ props }) {
     },
   });
 
+  const [user, setUser] = useState({
+    username: "Suyan",
+    email: "",
+    phone: "",
+    password: "",
+  });
+
+  const handleInput = (e) => {
+    console.log(e);
+  };
+
   return (
     <div className="flex-row text-center mt-72">
       <div className="text-area mb-2">Sign-Up</div>
       <div className="form-area">
-        <div className="name">
-          <input
-            label="Name"
-            placeholder="Name"
-            key={form.key("name")}
-            {...form.getInputProps("name")}
-          />
-        </div>
-        <div className="password my-1">
+        <form className="">
+          <div className="username">
+            <input
+              type="text"
+              name="username"
+              id="username"
+              label="username"
+              placeholder="username"
+              key={form.key("name")}
+              {...form.getInputProps("name")}
+              required
+              autoComplete="off"
+              value={user.username}
+              onChange={handleInput}
+            />
+          </div>
+
+          <div className="email">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              label="email"
+              placeholder="email"
+              key={form.key("name")}
+              {...form.getInputProps("name")}
+              required
+              autoComplete="off"
+            />
+          </div>
+          <div className="phone">
+            <input
+              type="number"
+              name="phone"
+              id="phone"
+              label="phone"
+              placeholder="phone"
+              key={form.key("name")}
+              {...form.getInputProps("name")}
+              required
+              autoComplete="off"
+            />
+          </div>
+          <div className="password">
+            <input
+              type="password"
+              name="password"
+              id="password"
+              label="password"
+              placeholder="password"
+              key={form.key("name")}
+              {...form.getInputProps("name")}
+              required
+              autoComplete="off"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="bg-red-500 text-white px-2 py-1 my-2 rounded-xl"
+          >
+            SignUp
+          </button>
+        </form>
+
+        {/* <div className="password my-1">
           <input
             mt="md"
             label="Password"
@@ -62,18 +131,18 @@ function SignUp({ props }) {
             key={form.key("password")}
             {...form.getInputProps("password")}
           />
-        </div>
+        </div> */}
       </div>
 
       <div className="authentication gap-2  justify-center">
-        <div className="signUp">
+        {/* <div className="signUp">
           <button
             onClick={trySignup}
             className="bg-red-500 text-white px-2 py-1 my-2 rounded-xl"
           >
             SignUp
           </button>
-        </div>
+        </div> */}
         <div className="back">
           <Link to={"/"}>Back</Link>
         </div>
