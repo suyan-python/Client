@@ -43,21 +43,32 @@ function SignUp({ props }) {
   });
 
   const [user, setUser] = useState({
-    username: "Suyan",
+    username: "",
     email: "",
     phone: "",
     password: "",
   });
 
   const handleInput = (e) => {
-    console.log(e);
+    let name = e.target.name;
+    let value = e.target.value;
+
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(user.username);
   };
 
   return (
     <div className="flex-row text-center mt-72">
       <div className="text-area mb-2">Sign-Up</div>
       <div className="form-area">
-        <form className="">
+        <form className="" onSubmit={handleSubmit}>
           <div className="username">
             <input
               type="text"
@@ -85,6 +96,8 @@ function SignUp({ props }) {
               {...form.getInputProps("name")}
               required
               autoComplete="off"
+              value={user.email}
+              onChange={handleInput}
             />
           </div>
           <div className="phone">
@@ -98,6 +111,8 @@ function SignUp({ props }) {
               {...form.getInputProps("name")}
               required
               autoComplete="off"
+              value={user.phone}
+              onChange={handleInput}
             />
           </div>
           <div className="password">
@@ -111,6 +126,8 @@ function SignUp({ props }) {
               {...form.getInputProps("name")}
               required
               autoComplete="off"
+              value={user.password}
+              onChange={handleInput}
             />
           </div>
 
