@@ -128,13 +128,22 @@
     .title {
       font-weight: 700;
       color: rgb(255, 255, 255);
-      font-size: 28px;
+      font-size: 38px;
     }
     .social-icons {
-      gap: 18px;
+      gap: 32px;
       display: flex;
       .social-icon {
         color: white;
+      }
+      .social-icon.facebook {
+        font-size: 12px;
+      }
+      .social-icon.twitter {
+        font-size: 12px;
+      }
+      .social-icon-github {
+        font-size: 12px;
       }
     }
   }

@@ -1,6 +1,9 @@
 import React from "react";
 import "./Footer.css";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import XIcon from "@mui/icons-material/X";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 function Footer() {
   return (
@@ -31,17 +34,28 @@ function Footer() {
           </li>
         </ul> */}
         <div className="container">
-          <div className="text-area">©All Rights Reserved Inc,2081</div>
+          <div className="text-area">©All Rights Reserved Inc.2081</div>
           <div className="follow-us">
             <div className="title">Contact</div>
             <div className="social-icons">
-              <div className="social-icon">Facebook</div>
-              <div className="social-icon">Twitter</div>
-              <div className="social-icon">GitHub</div>
+              <div className="social-icon facebook">
+                <Link to="https://facebook.com">
+                  <FacebookIcon />
+                </Link>
+              </div>
+              <div className="social-icon twitter">
+                <Link to="https://twitter.com">
+                  <XIcon />
+                </Link>
+              </div>
+              <div className="social-icon github">
+                <Link to="https://github.com">
+                  <GitHubIcon />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-
         <p>@SuyanManAmatya</p>
       </footer>
     </>
