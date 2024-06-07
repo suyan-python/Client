@@ -5,6 +5,23 @@ import HoverRating from "../rating/HoverRating";
 import "../style.css";
 
 export default function CompPeople() {
+  const Images = [
+    {
+      img: `${PB}`,
+    },
+  ];
+
+  // Images.map((project) => {
+  //   return (
+  //     <>
+  //       <div className="person1">
+  //         person1 section
+  //         <img src={project.img} alt="" />
+  //       </div>
+  //     </>
+  //   );
+  // });
+
   return (
     <>
       <div className="person1">

@@ -133,9 +133,16 @@
     .social-icons {
       gap: 32px;
       display: flex;
+
       .social-icon {
         color: white;
+        transition: 0.5s;
       }
+      .social-icon:hover {
+        opacity: 0.7;
+        transform: scale(1.2);
+      }
+
       .social-icon.facebook {
         font-size: 12px;
       }
