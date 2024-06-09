@@ -4,29 +4,22 @@ import RPB from "../../ima/computer/rpb.jpeg";
 import HoverRating from "../rating/HoverRating";
 import "../style.css";
 
+const Images = [
+  {
+    id: 1,
+    src: PB,
+    alt: "Image 1",
+  },
+];
 export default function CompPeople() {
-  const Images = [
-    {
-      img: `${PB}`,
-    },
-  ];
-
-  // Images.map((project) => {
-  //   return (
-  //     <>
-  //       <div className="person1">
-  //         person1 section
-  //         <img src={project.img} alt="" />
-  //       </div>
-  //     </>
-  //   );
-  // });
-
   return (
     <>
       <div className="person1">
         <div className="image-area">
-          <img className="w-2/4 rounded-xl shadow-lg" src={PB} alt="" />
+          {/* <img className="w-2/4 rounded-xl shadow-lg" src={PB} alt="" /> */}
+          {/* {Images.map((image) => {
+            <img src={image.src} alt="" />;
+          })} */}
         </div>
         <div className="text-area py-3">
           <div className="name">Name: Prakash Bhattarai</div>

@@ -52,9 +52,21 @@ function Home(props) {
             Teacher Details
           </Link>
         </div>
+
         <div className="db-area bg-red-500 h-80 text-center text-4xl text-white my-5 hover:bg-white hover:text-red-500 transition flex items-center justify-center rounded-xl hover:shadow-xl">
           <Link className=" transition hover:scale-110" to={"/AdminDetails"}>
             Admin Details
+          </Link>
+        </div>
+        <div className="db-area bg-green-500 h-80 text-center text-4xl text-white my-5 hover:bg-white hover:text-green-500 transition flex items-center justify-center rounded-xl hover:shadow-xl">
+          <Link className=" transition hover:scale-110" to={"/FileTransfer"}>
+            File Transfer
+          </Link>
+        </div>
+
+        <div className="db-area bg-cyan-700 h-80 text-center text-4xl text-white my-5 hover:bg-white hover:text-cyan-700 transition flex items-center justify-center rounded-xl hover:shadow-xl">
+          <Link className=" transition hover:scale-110" to={"/Chat"}>
+            iChat
           </Link>
         </div>
       </div>

@@ -17,8 +17,8 @@ import { useState } from "react";
 import AdminDetails from "./components/adminDetails/AdminDetails";
 import Logout from "./components/logout/Logout";
 import Footer from "./components/footer/Footer";
-
-// require("./userDetails");
+import FileTransfer from "./components/filetransfer/FileTransfer";
+import Chat from "./components/chat/Chat";
 
 function App() {
   const [verify, setVerify] = useState(false);
@@ -33,24 +33,13 @@ function App() {
               <Route path="/Home" element={<Home />} />
               <Route exact path="/faculty/Faculties" element={<Faculties />} />
               <Route exact path="/departments/Civil" element={<Civil />} />
-              <Route
-                exact
-                path="/departments/Computer"
-                element={<Computer />}
-              />
-              <Route
-                exact
-                path="/departments/Architect"
-                element={<Architect />}
-              />
-
-              <Route
-                exact
-                path="/TeacherDetails"
-                element={<TeacherDetails />}
-              />
+              <Route path="/departments/Computer" element={<Computer />} />
+              <Route path="/departments/Architect" element={<Architect />} />
+              <Route path="/TeacherDetails" element={<TeacherDetails />} />
               <Route exact path="/AdminDetails" element={<AdminDetails />} />
               <Route exact path="/Logout" element={<Logout />} />
+              <Route exact path="/FileTransfer" element={<FileTransfer />} />
+              <Route exact path="/Chat" element={<Chat />} />
             </Routes>
             <Footer />
           </Router>
