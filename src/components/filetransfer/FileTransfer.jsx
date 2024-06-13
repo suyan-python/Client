@@ -1,13 +1,16 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+
+const NavigateExternal = ({ to }) => {
+  useEffect(() => {
+    window.location.href = to;
+  }, []);
+  return null;
+};
 
 export default function FileTransfer() {
   return (
     <>
-      <div className="back">
-        <Link to="/Home">Back</Link>
-      </div>
-      <div className="title">This is File Transfer Section</div>
+      <NavigateExternal to="http://localhost:3001/" />
     </>
   );
 }

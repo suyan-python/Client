@@ -2,6 +2,7 @@ import { useForm } from "@mantine/form";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
+import { useState } from "react";
 
 function Form({ props }) {
   const URL = "http://localhost:8080/auth/login";
@@ -39,11 +40,70 @@ function Form({ props }) {
     },
   });
 
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInput = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Login Successful, ", user.username);
+  };
+
   return (
     <div className="flex-row text-center mt-72">
       <div className="text-area mb-2">SignIn</div>
       <div className="form-area">
-        <div className="name">
+        <form onSubmit={handleSubmit}>
+          <div className="email">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              label="email"
+              placeholder="email"
+              key={form.key("name")}
+              {...form.getInputProps("name")}
+              required
+              autoComplete="off"
+              value={user.email}
+              onChange={handleInput}
+            />
+          </div>
+
+          <div className="password">
+            <input
+              type="password"
+              name="password"
+              id="password"
+              label="password"
+              placeholder="password"
+              key={form.key("name")}
+              {...form.getInputProps("name")}
+              required
+              autoComplete="off"
+              value={user.password}
+              onChange={handleInput}
+            />
+          </div>
+          <button
+            type="submit"
+            className="bg-red-500 text-white px-2 py-1 my-2 rounded-xl"
+          >
+            SignIn
+          </button>
+        </form>
+
+        {/* <div className="name">
           <input
             label="Name"
             placeholder="Name"
@@ -60,7 +120,7 @@ function Form({ props }) {
             key={form.key("password")}
             {...form.getInputProps("password")}
           />
-        </div>
+        </div> */}
       </div>
 
       <div className="authentication gap-2 justify-center">
