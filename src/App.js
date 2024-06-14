@@ -19,6 +19,7 @@ import Logout from "./components/logout/Logout";
 import Footer from "./components/footer/Footer";
 import FileTransfer from "./components/filetransfer/FileTransfer";
 import Chat from "./components/chat/Chat";
+import Error from "./error/Error";
 
 function App() {
   const [verify, setVerify] = useState(false);
@@ -40,6 +41,7 @@ function App() {
               <Route exact path="/Logout" element={<Logout />} />
               <Route exact path="/FileTransfer" element={<FileTransfer />} />
               <Route exact path="/Chat" element={<Chat />} />
+              <Route path="*" element={<Error />} />
             </Routes>
             <Footer />
           </Router>
