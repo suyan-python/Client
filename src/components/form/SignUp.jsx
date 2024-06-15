@@ -7,7 +7,6 @@ import { useState } from "react";
 
 function SignUp({ props }) {
   const URL = "http://localhost:8080/auth/sign-up";
-  const navigate = useNavigate();
   const { storeTokenInLS } = useAuth();
 
   const trySignup = async () => {
@@ -49,6 +48,8 @@ function SignUp({ props }) {
     password: "",
   });
 
+  const navigate = useNavigate();
+
   const handleInput = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -59,16 +60,37 @@ function SignUp({ props }) {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(user.username);
+    try {
+      const response = await fetch(`http://localhost:5000/api/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        setUser({
+          username: "",
+          email: "",
+          phone: "",
+          password: "",
+        });
+        navigate("/");
+      }
+      console.log(response);
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
   return (
     <div className="flex-row text-center mt-72">
       <div className="text-area mb-2">Sign-Up</div>
       <div className="form-area">
-        <form className="" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="username">
             <input
               type="text"
@@ -135,7 +157,7 @@ function SignUp({ props }) {
             type="submit"
             className="bg-red-500 text-white px-2 py-1 my-2 rounded-xl"
           >
-            SignUp
+            SignUppp
           </button>
         </form>
 
