@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import "./signup.css";
 
 const URL = "http://localhost:5000/api/auth/register";
 
@@ -86,11 +87,13 @@ function SignUp({ props }) {
   };
 
   return (
-    <div className="flex-row text-center mt-72">
-      <div className="text-area mb-2">Sign-Up</div>
+    <div className="box flex-row text-center mt-72">
+      <div className="text-area mb-2">Sign-Up Form</div>
+
       <div className="form-area">
-        <form onSubmit={handleSubmit}>
+        <form className="content-area" onSubmit={handleSubmit}>
           <div className="username">
+            <p>Hello Friend,</p>
             <input
               type="text"
               name="username"
@@ -103,7 +106,6 @@ function SignUp({ props }) {
               onChange={handleInput}
             />
           </div>
-
           <div className="email">
             <input
               type="email"
@@ -144,37 +146,24 @@ function SignUp({ props }) {
             />
           </div>
 
-          <button
-            type="submit"
-            className="bg-red-500 text-white px-2 py-1 my-2 rounded-xl"
-          >
-            SignUppp
-          </button>
+          <div className="btn-sign">
+            <button
+              type="submit"
+              className="text-white px-2 py-1 my-2 rounded-xl"
+            >
+              CREATE ACCOUNT
+            </button>
+          </div>
+          <div className="bottom">
+            <div className="already">Already have a account?</div>
+            <div className="login">
+              <Link to="/signin">Sign In</Link>
+            </div>
+          </div>
         </form>
-
-        {/* <div className="password my-1">
-          <input
-            mt="md"
-            label="Password"
-            type="password"
-            placeholder="Password"
-            key={form.key("password")}
-            {...form.getInputProps("password")}
-          />
-        </div> */}
-      </div>
-
-      <div className="authentication gap-2  justify-center">
-        {/* <div className="signUp">
-          <button
-            onClick={trySignup}
-            className="bg-red-500 text-white px-2 py-1 my-2 rounded-xl"
-          >
-            SignUp
-          </button>
-        </div> */}
-        <div className="back">
-          <Link to={"/"}>Back</Link>
+        <div className="image-area">
+          <div className="title">Glad To See You!</div>
+          <div className="description">Hope you enjoy your experience here</div>
         </div>
       </div>
     </div>

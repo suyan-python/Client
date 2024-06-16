@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background-color: white;
-    color: black;
+body {
+  background-color: white;
+  color: black;
 }
 
-[data-theme = "dark"]{
-    background-color: black;
-    color: white;
+[data-theme="dark"] {
+  background-color: black;
+  color: white;
 }

@@ -2,6 +2,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { useState } from "react";
+import "./form.css";
 
 const URL = "http://localhost:5000/api/auth/login";
 
@@ -69,7 +70,10 @@ function Form({ props }) {
         alert("Login Successful");
       } else {
         alert("Invalid Credentials");
-        console.log("Invalid Credentials");
+        setUser({
+          email: "",
+          password: "",
+        });
       }
     } catch (error) {
       console.log(error);
@@ -77,10 +81,10 @@ function Form({ props }) {
   };
 
   return (
-    <div className="flex-row text-center mt-72">
+    <div className="box flex-row text-center mt-72">
       <div className="text-area mb-2">SignIn</div>
       <div className="form-area">
-        <form onSubmit={handleSubmit}>
+        <form className="content-area" onSubmit={handleSubmit}>
           <div className="email">
             <input
               type="email"
@@ -108,43 +112,15 @@ function Form({ props }) {
               onChange={handleInput}
             />
           </div>
-          <button
-            type="submit"
-            className="bg-red-500 text-white px-2 py-1 my-2 rounded-xl"
-          >
-            SignIn
-          </button>
+          <div className="btn-sign">
+            <button type="submit" className="px-2 py-1 my-2 rounded-xl">
+              SIGN IN
+            </button>
+          </div>
         </form>
-
-        {/* <div className="name">
-          <input
-            label="Name"
-            placeholder="Name"
-            key={form.key("name")}
-            {...form.getInputProps("name")}
-          />
-        </div>
-        <div className="password my-1">
-          <input
-            mt="md"
-            label="Password"
-            type="password"
-            placeholder="Password"
-            key={form.key("password")}
-            {...form.getInputProps("password")}
-          />
-        </div> */}
       </div>
 
       <div className="authentication gap-2 justify-center">
-        <div className="login">
-          <button
-            onClick={props}
-            className="bg-red-500 text-white px-2 py-1 my-2 rounded-xl"
-          >
-            SignIn
-          </button>
-        </div>
         <div className="back">
           <Link to={"/"}>Back</Link>
         </div>
