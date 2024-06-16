@@ -1,44 +1,36 @@
-import { useForm } from "@mantine/form";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { useState } from "react";
 
+const URL = "http://localhost:5000/api/auth/login";
+
 function Form({ props }) {
-  const URL = "http://localhost:8080/auth/login";
   const navigate = useNavigate();
   const { storeTokenInLS } = useAuth();
 
-  const tryLogin = async () => {
-    const name = form.getValues().name;
-    const password = form.getValues().password;
-    // console.log(form.getValues());
+  // const tryLogin = async () => {
+  //   const name = form.getValues().name;
+  //   const password = form.getValues().password;
+  //   // console.log(form.getValues());
 
-    try {
-      const res = await axios.post(URL, {
-        username: name,
-        password: password,
-      });
-      const token = res.data.data.token;
+  //   try {
+  //     const res = await axios.post(URL, {
+  //       username: name,
+  //       password: password,
+  //     });
+  //     const token = res.data.data.token;
 
-      if (res.status === 200) {
-        props();
-        navigate("/Home");
-        // localStorage.setItem("token", token);
-        storeTokenInLS(token);
-      }
-    } catch (e) {
-      alert("User Invalid");
-    }
-  };
-
-  const form = useForm({
-    mode: "uncontrolled",
-    initialValues: {
-      name: "",
-      password: "",
-    },
-  });
+  //     if (res.status === 200) {
+  //       props();
+  //       navigate("/Home");
+  //       // localStorage.setItem("token", token);
+  //       storeTokenInLS(token);
+  //     }
+  //   } catch (e) {
+  //     alert("User Invalid");
+  //   }
+  // };
 
   const [user, setUser] = useState({
     email: "",
@@ -54,9 +46,34 @@ function Form({ props }) {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Login Successful, ", user.username);
+    // alert("Login Successful, ", user.username);
+
+    try {
+      const response = await fetch(URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+      console.log("Login Form", response);
+      if (response.ok) {
+        setUser({
+          email: "",
+          password: "",
+        });
+        props();
+        navigate("/Home");
+        alert("Login Successful");
+      } else {
+        alert("Invalid Credentials");
+        console.log("Invalid Credentials");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -71,8 +88,6 @@ function Form({ props }) {
               id="email"
               label="email"
               placeholder="email"
-              key={form.key("name")}
-              {...form.getInputProps("name")}
               required
               autoComplete="off"
               value={user.email}
@@ -87,8 +102,6 @@ function Form({ props }) {
               id="password"
               label="password"
               placeholder="password"
-              key={form.key("name")}
-              {...form.getInputProps("name")}
               required
               autoComplete="off"
               value={user.password}

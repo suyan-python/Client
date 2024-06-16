@@ -1,45 +1,44 @@
-import { useForm } from "@mantine/form";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../store/auth";
 import { useState } from "react";
 
+const URL = "http://localhost:5000/api/auth/register";
+
 function SignUp({ props }) {
-  const URL = "http://localhost:8080/auth/sign-up";
-  const { storeTokenInLS } = useAuth();
+  // const URL = "http://localhost:8080/auth/sign-up";
+  // const { storeTokenInLS } = useAuth();
 
-  const trySignup = async () => {
-    const name = form.getValues().name;
-    const password = form.getValues().password;
-    console.log(name);
+  // const trySignup = async () => {
+  //   const name = form.getValues().name;
+  //   const password = form.getValues().password;
+  //   console.log(name);
 
-    try {
-      const res = await axios.post(URL, {
-        username: name,
-        password: password,
-      });
-      const token = res.data.data.token;
+  //   try {
+  //     const res = await axios.post(URL, {
+  //       username: name,
+  //       password: password,
+  //     });
+  //     const token = res.data.data.token;
 
-      if (res.status === 200) {
-        alert("SignUp Success");
-        navigate("/");
-        // localStorage.setItem("token", token);
-        storeTokenInLS(token);
-      }
-    } catch (e) {
-      alert("SignUp Error");
-      console.log(e);
-    }
-  };
+  //     if (res.status === 200) {
+  //       alert("SignUp Success");
+  //       navigate("/");
+  //       // localStorage.setItem("token", token);
+  //       storeTokenInLS(token);
+  //     }
+  //   } catch (e) {
+  //     alert("SignUp Error");
+  //     console.log(e);
+  //   }
+  // };
 
-  const form = useForm({
-    mode: "uncontrolled",
-    initialValues: {
-      name: "",
-      password: "",
-    },
-  });
+  // const form = useForm({
+  //   mode: "uncontrolled",
+  //   initialValues: {
+  //     name: "",
+  //     password: "",
+  //   },
+  // });
 
   const [user, setUser] = useState({
     username: "",
@@ -63,7 +62,7 @@ function SignUp({ props }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/register`, {
+      const response = await fetch(URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -98,8 +97,6 @@ function SignUp({ props }) {
               id="username"
               label="username"
               placeholder="username"
-              key={form.key("name")}
-              {...form.getInputProps("name")}
               required
               autoComplete="off"
               value={user.username}
@@ -114,8 +111,6 @@ function SignUp({ props }) {
               id="email"
               label="email"
               placeholder="email"
-              key={form.key("name")}
-              {...form.getInputProps("name")}
               required
               autoComplete="off"
               value={user.email}
@@ -129,8 +124,6 @@ function SignUp({ props }) {
               id="phone"
               label="phone"
               placeholder="phone"
-              key={form.key("name")}
-              {...form.getInputProps("name")}
               required
               autoComplete="off"
               value={user.phone}
@@ -144,8 +137,6 @@ function SignUp({ props }) {
               id="password"
               label="password"
               placeholder="password"
-              key={form.key("name")}
-              {...form.getInputProps("name")}
               required
               autoComplete="off"
               value={user.password}
