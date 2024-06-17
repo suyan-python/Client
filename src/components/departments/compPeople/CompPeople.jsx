@@ -39,37 +39,14 @@ export default function CompPeople() {
         <div className="rating-area">
           <HoverRating />
         </div>
+        <div className="input-section">
+          <input
+            type="text"
+            placeholder="FeedBack"
+            className="shadow rounded my-3"
+          />
+        </div>
 
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="username">User</label>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              autoComplete="off"
-              value={contact.username}
-              onChange={handleInput}
-              required
-            />
-          </div>
-          <div className="input-section">
-            <label htmlFor="message">FeedBack</label>
-            <textarea
-              name="message"
-              id="message"
-              autoComplete="off"
-              value={contact.message}
-              onChange={handleInput}
-              required
-              cols="30"
-              rows="10"
-            ></textarea>
-          </div>
-          <button className="bg-orange-500 shadow-md p-1 rounded-md text-white hover:scale-110 hover:bg-orange-700 transition">
-            Submit
-          </button>
-        </form>
         <div className="comment-section">
           <div className="submit-sec">
             <button className="bg-orange-500 shadow-md p-1 rounded-md text-white hover:scale-110 hover:bg-orange-700 transition">

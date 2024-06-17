@@ -65,9 +65,8 @@ function Form({ props }) {
           email: "",
           password: "",
         });
-        props();
         navigate("/Home");
-        alert("Login Successful");
+        window.location.reload();
       } else {
         alert("Invalid Credentials");
         setUser({
