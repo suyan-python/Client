@@ -40,6 +40,15 @@ function Navbar() {
                 </NavLink>
               </div>
 
+              <div className="item">
+                <NavLink
+                  className="hover:bg-pink-600 p-1 rounded transition  hover:text-white text-pink-600 hover:scale-125 architect"
+                  to="../departments/Computer"
+                >
+                  Architect
+                </NavLink>
+              </div>
+
               <div className="item hover:scale-110">
                 <NavLink
                   className="hover:bg-red-600 p-1 rounded transition  hover:text-white text-red-600"
