@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { useState } from "react";
@@ -8,7 +7,6 @@ const URL = "http://localhost:5000/api/auth/login";
 
 function Form({ props }) {
   const navigate = useNavigate();
-  const { storeTokenInLS } = useAuth();
 
   // const tryLogin = async () => {
   //   const name = form.getValues().name;
@@ -32,7 +30,7 @@ function Form({ props }) {
   //     alert("User Invalid");
   //   }
   // };
-
+  const { storeTokenInLS } = useAuth();
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -61,6 +59,8 @@ function Form({ props }) {
       });
       console.log("Login Form", response);
       if (response.ok) {
+        const res_data = await response.json();
+        storeTokenInLS(res_data.token);
         setUser({
           email: "",
           password: "",
@@ -81,8 +81,8 @@ function Form({ props }) {
   };
 
   return (
-    <div className="box flex-row text-center mt-72">
-      <div className="text-area mb-2">SignIn</div>
+    <div className="box-signup flex-row text-center mt-72">
+      <div className="text-area mb-2">Sign In</div>
       <div className="form-area">
         <form className="content-area" onSubmit={handleSubmit}>
           <div className="email">
@@ -117,13 +117,13 @@ function Form({ props }) {
               SIGN IN
             </button>
           </div>
+          <div className="bottom">
+            <div className="already">Don't have an account?</div>
+            <div className="login">
+              <Link to="/SignUp">Sign Up</Link>
+            </div>
+          </div>
         </form>
-      </div>
-
-      <div className="authentication gap-2 justify-center">
-        <div className="back">
-          <Link to={"/"}>Back</Link>
-        </div>
       </div>
     </div>
   );

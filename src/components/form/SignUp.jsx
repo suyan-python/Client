@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "../store/auth";
 import "./signup.css";
 
 const URL = "http://localhost:5000/api/auth/register";
@@ -49,6 +50,7 @@ function SignUp({ props }) {
   });
 
   const navigate = useNavigate();
+  const { storeTokenInLS } = useAuth();
 
   const handleInput = (e) => {
     let name = e.target.name;
@@ -72,13 +74,15 @@ function SignUp({ props }) {
       });
 
       if (response.ok) {
+        const res_data = await response.json();
+        storeTokenInLS(res_data.token);
         setUser({
           username: "",
           email: "",
           phone: "",
           password: "",
         });
-        navigate("/");
+        navigate("/SignIn");
       }
       console.log(response);
     } catch (error) {
@@ -155,9 +159,9 @@ function SignUp({ props }) {
             </button>
           </div>
           <div className="bottom">
-            <div className="already">Already have a account?</div>
+            <div className="already">Already have an account?</div>
             <div className="login">
-              <Link to="/signin">Sign In</Link>
+              <Link to="/SignIn">Sign In</Link>
             </div>
           </div>
         </form>

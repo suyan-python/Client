@@ -1,13 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import DarkMode from "../DarkMode/DarkMode";
-import logo from '../ima/rate.svg'
-import "./nav.css"
+import logo from "../ima/rate.svg";
+import "./nav.css";
 
-function Navbar()
-{
-  const logout = () =>
-  {
+function Navbar() {
+  const logout = () => {
     document.location = "/";
   };
   return (
@@ -46,7 +44,6 @@ function Navbar()
           <div className="item hover:scale-110">
             <NavLink
               className="hover:bg-red-600 p-1 rounded transition  hover:text-white text-red-600"
-              onClick={logout}
               to={"/Logout"}
             >
               Logout
