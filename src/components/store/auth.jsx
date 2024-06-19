@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
     return localStorage.removeItem("token");
   };
 
-  //getting user-data
+  //getting user-data JWT Authentication
   const userAuthentication = async () => {
     const URL = "http://localhost:8080/user";
     try {
