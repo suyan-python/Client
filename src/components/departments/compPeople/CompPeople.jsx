@@ -2,13 +2,28 @@ import React, { useState } from "react";
 import PB from "../../ima/computer/pb.jpeg";
 import RPB from "../../ima/computer/rpb.jpeg";
 import HoverRating from "../rating/HoverRating";
+import { useAuth } from "../../store/auth";
 import "../style.css";
 
 export default function CompPeople() {
-  const [contact, setContact] = useState({
+  const defaultContactForm = {
     username: "",
+    email: "",
     message: "",
-  });
+  };
+  const [contact, setContact] = useState(defaultContactForm);
+  const [userData, setUserData] = useState(true);
+  const { user } = useAuth();
+
+  if (userData && user) {
+    setContact({
+      username: user.userData.username,
+      email: user.userData.email,
+      message: "",
+    });
+
+    setUserData(false);
+  }
 
   const handleInput = (e) => {
     const name = e.target.name;
@@ -20,10 +35,27 @@ export default function CompPeople() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(contact);
+    try {
+      const response = await fetch("http://localhost:5000/api/form/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(contact),
+      });
+
+      if (response.ok) {
+        setContact(defaultContactForm);
+        const data = await response.json();
+        console.log(data);
+        alert("Feedback Submitted");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -39,13 +71,24 @@ export default function CompPeople() {
         <div className="rating-area">
           <HoverRating />
         </div>
-        <div className="input-section">
+
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="message"
+            value={contact.message}
+            onChange={handleInput}
+          />
+          <button type="submit">SUBMIT FEEDBACK</button>
+        </form>
+
+        {/* <div className="input-section">
           <input
             type="text"
             placeholder="FeedBack"
             className="shadow rounded my-3"
           />
-        </div>
+        </div> */}
 
         <div className="comment-section">
           <div className="submit-sec">
