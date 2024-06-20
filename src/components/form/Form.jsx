@@ -80,7 +80,7 @@ function Form({ props }) {
   };
 
   return (
-    <div className="box-signup flex-row text-center mt-72">
+    <div className="box-signup flex-row text-center mt-10">
       <div className="text-area mb-2">Sign In</div>
       <div className="form-area">
         <form className="content-area" onSubmit={handleSubmit}>

@@ -2,7 +2,6 @@
   font-family: "Exo", sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 
   .text-area {
@@ -104,4 +103,11 @@
 }
 .btn-sign button {
   background-color: rgb(0, 215, 234);
+  transition: 0.5s;
+}
+.btn-sign button:hover {
+  background-color: white;
+  color: rgb(0, 215, 234);
+  border: inset(2px solid rgb(0, 215, 234));
+  box-shadow: 0px 1px 5px rgba(0, 215, 234, 0.7);
 }

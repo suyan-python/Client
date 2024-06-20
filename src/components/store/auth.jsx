@@ -20,13 +20,17 @@ export const AuthProvider = ({ children }) => {
 
   //getting user-data JWT Authentication
   const userAuthentication = async () => {
-    const URL = "http://localhost:8080/user";
+    const URL = "http://localhost:5000/api/auth/user";
     try {
-      const res = axios.get(URL);
+      const response = await fetch(URL, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-      if (res.status === 200) {
-        const data = res.json();
-        console.log("From Admin Data", data);
+      if (response.ok) {
+        const data = await response.json();
         setUser(data);
       }
     } catch (error) {

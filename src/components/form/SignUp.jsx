@@ -91,8 +91,8 @@ function SignUp({ props }) {
   };
 
   return (
-    <div className="box flex-row text-center mt-72">
-      <div className="text-area mb-2">Sign-Up Form</div>
+    <div className="box flex-row text-center mt-10">
+      <div className="text-area mb-2">Sign Up</div>
 
       <div className="form-area">
         <form className="content-area" onSubmit={handleSubmit}>

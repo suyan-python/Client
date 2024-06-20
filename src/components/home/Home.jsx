@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Form from "../form/Form";
+import { useAuth } from "../store/auth";
 
 function Home(props) {
+  const [contact, setContact] = useState({
+    username: "",
+    email: "",
+    message: "",
+  });
+  const [userData, setUserData] = useState(true);
+  const { user } = useAuth();
+
+  if (userData && user) {
+    setContact({
+      username: user.userData.username,
+      email: user.userData.email,
+      message: "",
+    });
+
+    setUserData(false);
+  }
+
   return (
     <>
-      <div className="home text-center">Welcome, {props.name}</div>
+      <div className="home text-center">Welcome, {contact.username}</div>
       <div className="main-area">
         <div className="header text-center mt-3 text-5xl font-bold">
           <div className="letters flex justify-center">
