@@ -1,3 +1,9 @@
+nav {
+  .items {
+    align-items: center;
+  }
+}
+
 .active.civil {
   background-color: blue;
   color: white;

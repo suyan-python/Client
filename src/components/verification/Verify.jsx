@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../ima/rate.svg";
+import logo from "../ima/WebsiteLogo.png";
 import "./verify.css";
 
 export default function Verify() {
@@ -8,7 +8,7 @@ export default function Verify() {
     <div className="main-box flex-row text-center">
       <div className="sub-box">
         <div className="logo flex justify-center">
-          <img src={logo} alt="" />
+          <img className="Logo-Website" src={logo} alt="" />
         </div>
         <div className="text">Verify, Yourself</div>
 

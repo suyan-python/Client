@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import DarkMode from "../DarkMode/DarkMode";
-import logo from "../ima/rate.svg";
+// import logo from "../ima/rate.svg";
+// import logo from "../ima/FinalWebsiteLogo.png";
+import logo from "../ima/WebsiteLogo.png";
 import "./nav.css";
 
 import { useAuth } from "../store/auth";
@@ -18,7 +20,7 @@ function Navbar() {
           <div className="items flex justify-between py-3">
             <div className="image-area">
               <NavLink className="hover:text-orange-400" to="/Home">
-                <img src={logo} alt="" />
+                <img className="Logo-Website" src={logo} alt="" />
               </NavLink>
             </div>
             <div className="text-area flex gap-4">

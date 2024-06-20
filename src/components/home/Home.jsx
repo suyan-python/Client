@@ -23,7 +23,7 @@ function Home(props) {
   }
 
   return (
-    <>
+    <div className="body">
       <div className="home text-center">Welcome, {contact.username}</div>
       <div className="main-area">
         <div className="header text-center mt-3 text-5xl font-bold">
@@ -63,7 +63,7 @@ function Home(props) {
             className="transition hover:scale-110"
             to="../faculty/Faculties"
           >
-            Faculties
+            Rate My Professor
           </Link>
         </div>
         <div className="db-area bg-cyan-700 h-80 text-center text-4xl text-white my-5 hover:bg-white hover:text-cyan-700 transition flex items-center justify-center rounded-xl hover:shadow-xl">
@@ -89,7 +89,7 @@ function Home(props) {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
