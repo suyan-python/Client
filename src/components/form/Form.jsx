@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { useState } from "react";
 import "./form.css";
+import Logo from "../ima/WebsiteLogo.png";
 
 const URL = "http://localhost:5000/api/auth/login";
 
@@ -123,6 +124,11 @@ function Form({ props }) {
             </div>
           </div>
         </form>
+        <div className="image-area">
+          <img className="Logo-Website" src={Logo} alt="" />
+          <div className="title">Welcomes You!</div>
+          <div className="description">Let's Dive into the World</div>
+        </div>
       </div>
     </div>
   );

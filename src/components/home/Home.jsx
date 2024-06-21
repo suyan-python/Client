@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Form from "../form/Form";
 import { useAuth } from "../store/auth";
+import PreLoader from "../PreLoader";
+import "./home.css";
 
 function Home(props) {
   const [contact, setContact] = useState({
@@ -24,7 +26,10 @@ function Home(props) {
 
   return (
     <div className="body">
-      <div className="home text-center">Welcome, {contact.username}</div>
+      {/* <PreLoader /> */}
+      <div className="home text-center">
+        Welcome, {contact.username.toUpperCase()}
+      </div>
       <div className="main-area">
         <div className="header text-center mt-3 text-5xl font-bold">
           <div className="letters flex justify-center">
@@ -58,7 +63,7 @@ function Home(props) {
           </div>
         </div>
 
-        <div className="faculty-area bg-orange-400 h-80 text-center text-4xl text-white my-5 hover:bg-white hover:text-orange-400 transition flex items-center justify-center rounded-xl hover:shadow-xl">
+        <div className="rate-professor bg-orange-400 h-80 text-center text-4xl text-white my-5 hover:bg-white hover:text-orange-400 transition flex items-center justify-center rounded-xl hover:shadow-xl hover:border-orange-400 ">
           <Link
             className="transition hover:scale-110"
             to="../faculty/Faculties"
@@ -66,24 +71,24 @@ function Home(props) {
             Rate My Professor
           </Link>
         </div>
-        <div className="db-area bg-cyan-700 h-80 text-center text-4xl text-white my-5 hover:bg-white hover:text-cyan-700 transition flex items-center justify-center rounded-xl hover:shadow-xl">
+        <div className=" teacher-details db-area bg-cyan-700 h-80 text-center text-4xl text-white my-5 hover:bg-white hover:text-cyan-700 transition flex items-center justify-center rounded-xl hover:shadow-xl">
           <Link className=" transition hover:scale-110" to={"/TeacherDetails"}>
             Teacher Details
           </Link>
         </div>
 
-        <div className="db-area bg-red-500 h-80 text-center text-4xl text-white my-5 hover:bg-white hover:text-red-500 transition flex items-center justify-center rounded-xl hover:shadow-xl">
+        <div className="admin-details db-area bg-red-500 h-80 text-center text-4xl text-white my-5 hover:bg-white hover:text-red-500 transition flex items-center justify-center rounded-xl hover:shadow-xl">
           <Link className=" transition hover:scale-110" to={"/AdminDetails"}>
             Admin Details
           </Link>
         </div>
-        <div className="db-area bg-green-500 h-80 text-center text-4xl text-white my-5 hover:bg-white hover:text-green-500 transition flex items-center justify-center rounded-xl hover:shadow-xl">
+        <div className="file-transfer db-area bg-green-500 h-80 text-center text-4xl text-white my-5 hover:bg-white hover:text-green-500 transition flex items-center justify-center rounded-xl hover:shadow-xl">
           <Link className=" transition hover:scale-110" to={"/FileTransfer"}>
             File Transfer
           </Link>
         </div>
 
-        <div className="db-area bg-cyan-700 h-80 text-center text-4xl text-white my-5 hover:bg-white hover:text-cyan-700 transition flex items-center justify-center rounded-xl hover:shadow-xl">
+        <div className="iChat db-area bg-cyan-700 h-80 text-center text-4xl text-white my-5 hover:bg-white hover:text-cyan-700 transition flex items-center justify-center rounded-xl hover:shadow-xl">
           <Link className=" transition hover:scale-110" to={"/Chat"}>
             iChat
           </Link>

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../store/auth";
 import "./signup.css";
+import Logo from "../ima/WebsiteLogo.png";
 
 const URL = "http://localhost:5000/api/auth/register";
 
@@ -166,6 +167,7 @@ function SignUp({ props }) {
           </div>
         </form>
         <div className="image-area">
+          <img className="Logo-Website" src={Logo} alt="" />
           <div className="title">Glad To See You!</div>
           <div className="description">Hope you enjoy your experience here</div>
         </div>

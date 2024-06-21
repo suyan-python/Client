@@ -28,6 +28,12 @@ export default function Verify() {
             </Link>
           </div>
         </div>
+        <div className="text-area">
+          <div className="title">
+            By Signing, You accept all our terms and policies
+          </div>
+        </div>
+        <div className="sub-title">©All rights reserved, Suyan Man Amatya</div>
       </div>
     </div>
   );
