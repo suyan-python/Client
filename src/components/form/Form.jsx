@@ -4,6 +4,8 @@ import { useState } from "react";
 import "./form.css";
 import Logo from "../ima/WebsiteLogo.png";
 
+import { toast } from "react-toastify";
+
 const URL = "http://localhost:5000/api/auth/login";
 
 function Form({ props }) {
@@ -59,8 +61,8 @@ function Form({ props }) {
         body: JSON.stringify(user),
       });
       console.log("Login Form", response);
+      const res_data = await response.json();
       if (response.ok) {
-        const res_data = await response.json();
         storeTokenInLS(res_data.token);
         setUser({
           email: "",
@@ -69,7 +71,9 @@ function Form({ props }) {
         navigate("/Home");
         window.location.reload();
       } else {
-        alert("Invalid Credentials");
+        toast.error(
+          res_data.extraDetails ? res_data.extraDetails : res_data.message
+        );
         setUser({
           email: "",
           password: "",

@@ -5,6 +5,8 @@ import { useAuth } from "../store/auth";
 import "./signup.css";
 import Logo from "../ima/WebsiteLogo.png";
 
+import { toast } from "react-toastify";
+
 const URL = "http://localhost:5000/api/auth/register";
 
 function SignUp({ props }) {
@@ -73,10 +75,12 @@ function SignUp({ props }) {
         },
         body: JSON.stringify(user),
       });
+      const res_data = await response.json();
+      console.log("Response from server", res_data.extraDetails);
 
       if (response.ok) {
-        const res_data = await response.json();
         storeTokenInLS(res_data.token);
+        toast.success("Registration Successful");
         setUser({
           username: "",
           email: "",
@@ -84,6 +88,10 @@ function SignUp({ props }) {
           password: "",
         });
         navigate("/SignIn");
+      } else {
+        toast.error(
+          res_data.extraDetails ? res_data.extraDetails : res_data.message
+        );
       }
       console.log(response);
     } catch (error) {
