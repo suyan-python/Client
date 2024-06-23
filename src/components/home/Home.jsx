@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Form from "../form/Form";
 import { useAuth } from "../store/auth";
 import PreLoader from "../PreLoader";
 import "./home.css";
@@ -26,7 +25,7 @@ function Home(props) {
 
   return (
     <div className="body">
-      {/* <PreLoader /> */}
+      <PreLoader />
       <div className="home text-center">
         Welcome, {contact.username.toUpperCase()}
       </div>
